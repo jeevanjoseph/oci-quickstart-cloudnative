@@ -22,7 +22,8 @@ The steps below guide you through deploying the application on your tenancy usin
 4. Configure the stack
    1. **Database Name** - You can choose to provide a database name (optional)
    2. **Node Count** - Select if you want to deploy one or two application instances.
-   3. **Availability Domain**  - Select any availability domain to create the resources. If you run in to service limits, you could try another availability domain.
+   3. **Availability Domain**  - Select the availability domain where you have Always Free compute resources. If you run in to service limits, you could try another availability domain.
+   > In regions with multiple availability domains, Always Free compute resources are available only in one of the availability domains. To find where your Always Free compute resources are, navigate to `Home > Governance > Limits, Quotas and Usage`. Select Compute as the service and cycle through the availability domains in the scope drop-down. The service limit column shows the limits for each reosurce type. Always Free compute resources are VMs of shape `VM.Standard.E2.1.Micro`. Check for this shape, and you will see one AD where you were allocated capacity. Note that paid services are always available in all availability domains where applicable.
 5. Review the information and click Create buton. 
    > The upload can take a few seconds, after which you will be taken to the newly created stack
 6. On Stack details page, click on `Terraform Actions > Apply`
