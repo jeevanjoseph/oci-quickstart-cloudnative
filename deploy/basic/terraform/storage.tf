@@ -116,4 +116,27 @@ resource "oci_objectstorage_preauthrequest" "mushop_lite_preauth" {
   object = "${oci_objectstorage_object.mushop_basic.object}"
 }
 
+resource "oci_objectstorage_object_lifecycle_policy" "mushop_lifecycle_policy" {
+  #Required
+  bucket    = "${oci_objectstorage_bucket.mushop.name}"
+  namespace = "${data.oci_objectstorage_namespace.user_namespace.namespace}"
+
+  #Optional
+  rules {
+    #Required
+    action      = "DELETE"
+    is_enabled  = true
+    name        = "mushop-${random_id.mushop_id.dec}"
+    time_amount = 1
+    time_unit   = "DAYS"
+
+    #Optional
+    object_name_filter {
+      #Optional
+      inclusion_patterns = ["${oci_objectstorage_object.mushop_wallet.object}"]
+    }
+  }
+}
+
+
 
