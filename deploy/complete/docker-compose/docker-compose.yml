@@ -217,10 +217,11 @@ services:
 
   load:
     image: mushop-load:snapshot
-    
+    ports: 
+      - 8089:8089
     hostname: nats
     restart: "no"
-    command: -h 150.136.200.204 -c 100 -r 60
+    command: -h edge-router:8080 -c 15 -r 60
     read_only: true
 
 

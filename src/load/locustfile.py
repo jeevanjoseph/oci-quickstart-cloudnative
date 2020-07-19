@@ -42,7 +42,6 @@ class Web(HttpUser):
         self.client.get("/category.html")
 
         # get products from the catalogue over the catalogue API, choose random one to buy. 
-        get products from the catalogue over the catalogue API
         catalogue = self.client.get("/api/catalogue").json()
         category_item = choice(catalogue)
         item_id = category_item["id"]
