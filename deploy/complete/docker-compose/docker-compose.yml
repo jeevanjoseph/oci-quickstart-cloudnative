@@ -220,8 +220,8 @@ services:
     ports: 
       - 8089:8089
     hostname: locust
-    restart: "no"
-    command: -h edge-router:8080 -c 15 -r 60
+    restart: always
+    command: -h edge-router:8080 -c 1 -r 1
     read_only: true
 
 
