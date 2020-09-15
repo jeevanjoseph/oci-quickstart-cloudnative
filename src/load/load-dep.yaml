@@ -2,25 +2,42 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: load
+  name: locust
   labels:
-    name: load
+    name: locust
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: load
-      app.kubernetes.io/name: load
+      name: locust
+      app.kubernetes.io/name: locust
   template:
     metadata:
       labels:
-        app: load
-        app.kubernetes.io/name: load
+        name: locust
+        app.kubernetes.io/name: locust
     spec:
       containers:
-      - name: load
-        image: iad.ocir.io/oracle/ateam/mushop-load:2.0.0
+      - name: locust
+        image: iad.ocir.io/ociateam/jeevan/mushop-load:snapshot
         imagePullPolicy: Always
-        args: ["-h", "edge", "-c", "15", "-r", "120"]
+        ports:
+          - containerPort: 8089
+        args: ["-h", "edge", "-c", "1", "-r", "1"]
       nodeSelector:
         beta.kubernetes.io/os: linux
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: locust
+  labels:
+    name: locust
+spec:
+  selector:
+    name: locust
+  ports:
+  - port: 80
+    targetPort: 8089
+
+
