@@ -18,7 +18,7 @@ class Web(HttpUser):
     def load(self):
 
         # Setup username and password(both are generated)
-        username = "user" + str(randint(0, 1000000))
+        username = "user" + str(randint(0, 1000000)) + "_" + str(randint(0, 1000000))
         password = str(randint(0, 10000000))
         base64string = (
             base64.encodebytes(bytes(("%s:%s" % (username, password)), "utf-8"))
