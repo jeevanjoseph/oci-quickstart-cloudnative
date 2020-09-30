@@ -52,6 +52,22 @@ grafana:
         gnetId: 12464
         revision: 2
         datasource: Prometheus
+      carts:
+        gnetId: 12613
+        revision: 3
+        datasource: Prometheus
+      fulfillment:
+        gnetId: 12568
+        revision: 1
+        datasource: Prometheus
+      nats:
+        gnetId: 12574
+        revision: 3
+        datasource: Prometheus
+      orders:
+        gnetId: 12696
+        revision: 2
+        datasource: Prometheus
   dashboardProviders:
     dashboardproviders.yaml:
       apiVersion: 1
