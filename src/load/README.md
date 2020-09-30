@@ -18,7 +18,14 @@ the system. The tests are written using [locust.io](http://locust.io)
 kubectl apply -f load-dep.yaml
 ```
 
-2. Watch pods/hpa
+2. Access the Locust UI and start a test
+   
+```text
+kubectl port-forward svc/locust 3000:80
+```
+go to [http://localhost:3000](http://localhost:3000) to access the locust UI and start a test.
+
+3. Watch pods/hpa
 
 ```text
 kubectl get hpa --watch
